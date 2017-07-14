@@ -154,7 +154,9 @@
   <ItemGroup>
     <ClInclude Include="BreadthFirstFinder.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="GreedyBestFirstFinder.h" />
     <ClInclude Include="GridHelper.h" />
+    <ClInclude Include="Heuristics.h" />
     <ClInclude Include="IPathFinder.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="pch.h" />
@@ -165,7 +167,9 @@
   <ItemGroup>
     <ClCompile Include="BreadthFirstFinder.cpp" />
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="GreedyBestFirstFinder.cpp" />
     <ClCompile Include="GridHelper.cpp" />
+    <ClCompile Include="Heuristics.cpp" />
     <ClCompile Include="IPathFinder.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="pch.cpp">

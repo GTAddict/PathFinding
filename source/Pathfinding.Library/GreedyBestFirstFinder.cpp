@@ -1,14 +1,20 @@
 #include "pch.h"
-#include "BreadthFirstFinder.h"
+#include "GreedyBestFirstFinder.h"
 
 namespace Library
 {
-	std::deque<NodePtr> BreadthFirstFinder::FindPath(NodePtr start, NodePtr end, std::set<NodePtr>& closedSet)
+	GreedyBestFirstFinder::GreedyBestFirstFinder(HeuristicType heuristic)
+		: IPathFinder(heuristic)
+	{
+	}
+
+
+	std::deque<NodePtr> GreedyBestFirstFinder::FindPath(NodePtr start, NodePtr end, std::set<NodePtr>& closedSet)
 	{
 		UNREFERENCED_PARAMETER(closedSet);
 
 		std::deque<NodePtr> path;
-		std::queue<NodePtr> frontier;
+		std::priority_queue<NodePtr> frontier;
 		std::set<NodePtr> visited;
 
 		frontier.push(start);
@@ -18,7 +24,7 @@ namespace Library
 
 		while (frontier.size() > 0)
 		{
-			auto node = frontier.front();
+			auto node = frontier.top();
 			frontier.pop();
 
 			for (auto neighbor : node->Neighbors())
@@ -27,6 +33,7 @@ namespace Library
 				if (visited.find(neighborShared) == visited.end())
 				{
 					neighborShared->SetParent(node);
+					neighborShared->SetHeuristic(mHeuristicFunction(neighborShared, end));
 					frontier.push(neighborShared);
 					visited.insert(neighborShared);
 					if (neighborShared == end)
@@ -55,7 +62,7 @@ namespace Library
 				path.push_front(parent);
 				current = parent;
 			}
-		
+
 		}
 
 		return path;

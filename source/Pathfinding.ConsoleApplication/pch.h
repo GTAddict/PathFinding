@@ -35,3 +35,5 @@
 #include "StopWatch.h"
 #include "IPathFinder.h"
 #include "BreadthFirstFinder.h"
+#include "GreedyBestFirstFinder.h"
+#include "Heuristics.h"
