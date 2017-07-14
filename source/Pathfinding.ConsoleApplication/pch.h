@@ -36,4 +36,5 @@
 #include "IPathFinder.h"
 #include "BreadthFirstFinder.h"
 #include "GreedyBestFirstFinder.h"
+#include "DijkstrasFinder.h"
 #include "Heuristics.h"

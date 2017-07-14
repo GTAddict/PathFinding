@@ -7,6 +7,6 @@ namespace Library
 	{
 	public:
 		static float ManhattanDistance(std::shared_ptr<Node> current, std::shared_ptr<Node> end);
-
+		static float ConstantOneDistance(std::shared_ptr<Node> node, std::shared_ptr<Node> neighbor);
 	};
 }

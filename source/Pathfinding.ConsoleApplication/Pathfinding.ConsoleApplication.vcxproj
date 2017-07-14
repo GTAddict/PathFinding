@@ -94,9 +94,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DijkstrasFinder.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DijkstrasFinder.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 	int32_t width, height;
 	Graph g = GridHelper::LoadGridFromFile("Grid.grid", width, height);
 	
-	IPathFinder* finder = new GreedyBestFirstFinder(Heuristics::ManhattanDistance);
+	IPathFinder* finder = new DijkstrasFinder(Heuristics::ConstantOneDistance);
 	std::deque<NodePtr> path = finder->FindPath(g.At(0, 0), g.At(width / 2, height - 1));
 	std::set<NodePtr> collection;
 	for (auto node : path)

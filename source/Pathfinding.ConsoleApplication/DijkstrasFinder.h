@@ -3,11 +3,11 @@
 
 namespace Library
 {
-	class GreedyBestFirstFinder final : public IPathFinder
+	class DijkstrasFinder : public IPathFinder
 	{
 	public:
 
-		GreedyBestFirstFinder(HeuristicFn_t heuristic);
+		DijkstrasFinder(CostFn_t costFunction);
 		std::deque<NodePtr> FindPath(NodePtr start, NodePtr end, std::set<NodePtr>& closedSet) override;
 	};
 }

@@ -5,8 +5,9 @@ using namespace std;
 
 namespace Library
 {
-	IPathFinder::IPathFinder(HeuristicType heuristic)
-		: mHeuristicFunction(heuristic)
+	IPathFinder::IPathFinder(HeuristicFn_t heuristicFunction, CostFn_t costFunction)
+		: mHeuristicFunction(heuristicFunction)
+		, mCostFunction(costFunction)
 	{
 	}
 
@@ -16,8 +17,13 @@ namespace Library
 		return FindPath(start, end, closedSet);
 	}
 
-	void IPathFinder::SetHeuristicFunction(HeuristicType function)
+	void IPathFinder::SetHeuristicFunction(HeuristicFn_t function)
 	{
 		mHeuristicFunction = function;
+	}
+
+	void IPathFinder::SetCostFunction(CostFn_t function)
+	{
+		mCostFunction = function;
 	}
 }

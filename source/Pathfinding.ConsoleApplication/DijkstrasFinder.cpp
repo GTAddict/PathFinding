@@ -1,15 +1,14 @@
 #include "pch.h"
-#include "GreedyBestFirstFinder.h"
+#include "DijkstrasFinder.h"
 
 namespace Library
 {
-	GreedyBestFirstFinder::GreedyBestFirstFinder(HeuristicFn_t heuristic)
-		: IPathFinder(heuristic, nullptr)
+	DijkstrasFinder::DijkstrasFinder(CostFn_t costFunction)
+		: IPathFinder(nullptr, costFunction)
 	{
 	}
 
-
-	std::deque<NodePtr> GreedyBestFirstFinder::FindPath(NodePtr start, NodePtr end, std::set<NodePtr>& closedSet)
+	std::deque<NodePtr> DijkstrasFinder::FindPath(NodePtr start, NodePtr end, std::set<NodePtr>& closedSet)
 	{
 		UNREFERENCED_PARAMETER(closedSet);
 
@@ -32,10 +31,15 @@ namespace Library
 				auto neighborShared = neighbor.lock();
 				if (visited.find(neighborShared) == visited.end())
 				{
-					neighborShared->SetParent(node);
-					neighborShared->SetHeuristic(mHeuristicFunction(neighborShared, end));
-					frontier.push(neighborShared);
-					visited.insert(neighborShared);
+					float newCost = node->PathCost() + mCostFunction(node, neighborShared);
+					if (neighborShared->PathCost() == 0.0f || newCost < neighborShared->PathCost())
+					{
+						neighborShared->SetPathCost(newCost);
+						neighborShared->SetParent(node);
+						frontier.push(neighborShared);
+						visited.insert(neighborShared);
+					}
+				
 					if (neighborShared == end)
 					{
 						foundPath = true;

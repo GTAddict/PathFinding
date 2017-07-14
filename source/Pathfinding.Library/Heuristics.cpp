@@ -7,4 +7,12 @@ namespace Library
 	{
 		return static_cast<float>(abs(end->Location().X() - current->Location().X()) - abs(end->Location().Y() - current->Location().Y()));
 	}
+
+	float Heuristics::ConstantOneDistance(std::shared_ptr<Node> current, std::shared_ptr<Node> next)
+	{
+		UNREFERENCED_PARAMETER(current);
+		UNREFERENCED_PARAMETER(next);
+
+		return 1.0f;
+	}
 }
