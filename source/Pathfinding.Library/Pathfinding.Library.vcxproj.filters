@@ -11,6 +11,9 @@
       <Filter>Search Algorithms</Filter>
     </ClCompile>
     <ClCompile Include="StopWatch.cpp" />
+    <ClCompile Include="BreadthFirstFinder.cpp">
+      <Filter>Search Algorithms</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -23,6 +26,9 @@
       <Filter>Search Algorithms</Filter>
     </ClInclude>
     <ClInclude Include="StopWatch.h" />
+    <ClInclude Include="BreadthFirstFinder.h">
+      <Filter>Search Algorithms</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Point.inl" />

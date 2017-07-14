@@ -34,3 +34,4 @@
 #include "Utility.h"
 #include "StopWatch.h"
 #include "IPathFinder.h"
+#include "BreadthFirstFinder.h"

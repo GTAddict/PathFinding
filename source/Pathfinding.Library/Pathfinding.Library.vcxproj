@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BreadthFirstFinder.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GridHelper.h" />
     <ClInclude Include="IPathFinder.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BreadthFirstFinder.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GridHelper.cpp" />
     <ClCompile Include="IPathFinder.cpp" />
