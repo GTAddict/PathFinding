@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GreedyBestFirstFinder.h"
+#include "Heuristics.h"
 
 namespace Library
 {
@@ -14,11 +15,10 @@ namespace Library
 		UNREFERENCED_PARAMETER(closedSet);
 
 		std::deque<NodePtr> path;
-		std::priority_queue<NodePtr> frontier;
-		std::set<NodePtr> visited;
+		std::priority_queue<NodePtr, std::vector<NodePtr>, Heuristics::GreaterThan> frontier;
 
 		frontier.push(start);
-		visited.insert(start);
+		closedSet.insert(start);
 
 		bool foundPath = false;
 
@@ -30,12 +30,12 @@ namespace Library
 			for (auto neighbor : node->Neighbors())
 			{
 				auto neighborShared = neighbor.lock();
-				if (visited.find(neighborShared) == visited.end())
+				if (closedSet.find(neighborShared) == closedSet.end())
 				{
 					neighborShared->SetParent(node);
 					neighborShared->SetHeuristic(mHeuristicFunction(neighborShared, end));
 					frontier.push(neighborShared);
-					visited.insert(neighborShared);
+					closedSet.insert(neighborShared);
 					if (neighborShared == end)
 					{
 						foundPath = true;

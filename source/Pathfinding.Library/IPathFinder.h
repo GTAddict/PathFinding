@@ -9,9 +9,10 @@ namespace Library
 {
 	class Graph;
 
-	using NodePtr = std::shared_ptr<Node>;
+	using NodePtr		= std::shared_ptr<Node>;
+	using NodeWeakPtr	= std::weak_ptr<Node>;
 	using HeuristicFn_t = std::function<float(NodePtr, NodePtr)>;
-	using CostFn_t = std::function<float(NodePtr, NodePtr)>;
+	using CostFn_t		= std::function<float(NodePtr, NodePtr)>;
 
 	class IPathFinder
 	{

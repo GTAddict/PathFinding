@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "DijkstrasFinder.h"
+#include "Heuristics.h"
 
 namespace Library
 {
@@ -10,35 +11,29 @@ namespace Library
 
 	std::deque<NodePtr> DijkstrasFinder::FindPath(NodePtr start, NodePtr end, std::set<NodePtr>& closedSet)
 	{
-		UNREFERENCED_PARAMETER(closedSet);
-
 		std::deque<NodePtr> path;
-		std::priority_queue<NodePtr> frontier;
-		std::set<NodePtr> visited;
-
+		std::priority_queue<NodePtr, std::vector<NodePtr>, Heuristics::GreaterThan> frontier;
+		
 		frontier.push(start);
-		visited.insert(start);
-
+		closedSet.insert(start);
+		
 		bool foundPath = false;
-
+		
 		while (frontier.size() > 0)
 		{
 			auto node = frontier.top();
 			frontier.pop();
-
+		
 			for (auto neighbor : node->Neighbors())
 			{
 				auto neighborShared = neighbor.lock();
-				if (visited.find(neighborShared) == visited.end())
+				float newCost = node->PathCost() + mCostFunction(node, neighborShared);
+				if (closedSet.find(neighborShared) == closedSet.end() || newCost < neighborShared->PathCost())
 				{
-					float newCost = node->PathCost() + mCostFunction(node, neighborShared);
-					if (neighborShared->PathCost() == 0.0f || newCost < neighborShared->PathCost())
-					{
-						neighborShared->SetPathCost(newCost);
-						neighborShared->SetParent(node);
-						frontier.push(neighborShared);
-						visited.insert(neighborShared);
-					}
+					neighborShared->SetPathCost(newCost);
+					neighborShared->SetParent(node);
+					frontier.push(neighborShared);
+					closedSet.insert(neighborShared);
 				
 					if (neighborShared == end)
 					{
@@ -47,26 +42,26 @@ namespace Library
 					}
 				}
 			}
-
+		
 			if (foundPath)
 			{
 				break;
 			}
 		}
-
+		
 		if (foundPath)
 		{
 			NodePtr current = end;
-
+		
 			path.push_front(end);
-
+		
 			while (current != start)
 			{
 				NodePtr parent = current->Parent().lock();
 				path.push_front(parent);
 				current = parent;
 			}
-
+		
 		}
 
 		return path;

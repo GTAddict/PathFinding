@@ -9,7 +9,7 @@ namespace Library
 
 		std::deque<NodePtr> path;
 		std::queue<NodePtr> frontier;
-		std::set<NodePtr> visited;
+		std::unordered_set<NodePtr> visited;
 
 		frontier.push(start);
 		visited.insert(start);
