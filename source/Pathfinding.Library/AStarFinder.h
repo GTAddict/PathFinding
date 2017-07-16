@@ -10,5 +10,6 @@ namespace Library
 		virtual ~AStarFinder() override = default;
 
 		std::deque<NodePtr> FindPath(NodePtr start, NodePtr end, std::set<NodePtr>& closedSet) override;
+		std::string GetName() const override;
 	};
 }

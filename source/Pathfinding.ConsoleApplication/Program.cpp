@@ -16,11 +16,18 @@ int main(int argc, char* argv[])
 	StopWatch stopWatch;
 
 	std::vector<std::shared_ptr<IPathFinder>> pathFinders;
+	pathFinders.push_back(std::make_shared<BreadthFirstFinder>());
+	pathFinders.push_back(std::make_shared<GreedyBestFirstFinder>(Heuristics::ManhattanDistance));
+	pathFinders.push_back(std::make_shared<DijkstrasFinder>(Heuristics::ConstantOneDistance));
 	pathFinders.push_back(std::make_shared<AStarFinder>(Heuristics::ManhattanDistance, Heuristics::ConstantOneDistance));
 	
 	for (auto finder : pathFinders)
 	{
 		g.Reset();
+		stopWatch.Restart();
+		std::set<NodePtr> nodesVisited;
+		std::deque<NodePtr> path = finder->FindPath(g.At(1, 1), g.At(9, 8), nodesVisited);
+		stopWatch.Stop();
 		std::set<NodePtr> collection;
 		for (auto node : path)
 		{
@@ -28,6 +35,7 @@ int main(int argc, char* argv[])
 		}
 
 		std::cout << "=======================================================" << std::endl;
+		std::cout << finder->GetName() << std::endl;
 		std::cout << "=======================================================" << std::endl;
 		for (int32_t j = 0; j < height; ++j)
 		{
@@ -46,6 +54,7 @@ int main(int argc, char* argv[])
 			std::cout << std::endl;
 		}
 		std::cout << "=======================================================" << std::endl;
+		std::cout << "Time: " << stopWatch.Elapsed().count() << " microseconds\nNodes visited: " << nodesVisited.size() << "\nPath length: " << path.size() << std::endl;
 		std::cout << "=======================================================" << std::endl;
 	}
 
