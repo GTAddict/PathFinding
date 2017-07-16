@@ -1,19 +1,16 @@
 #include "pch.h"
-#include "GreedyBestFirstFinder.h"
+#include "AStarFinder.h"
 #include "Heuristics.h"
 
 namespace Library
 {
-	GreedyBestFirstFinder::GreedyBestFirstFinder(HeuristicFn_t heuristic)
-		: IPathFinder(heuristic, nullptr)
+	AStarFinder::AStarFinder(HeuristicFn_t heuristicFunction, CostFn_t costFunction)
+		: IPathFinder(heuristicFunction, costFunction)
 	{
 	}
 
-
-	std::deque<NodePtr> GreedyBestFirstFinder::FindPath(NodePtr start, NodePtr end, std::set<NodePtr>& closedSet)
+	std::deque<NodePtr> AStarFinder::FindPath(NodePtr start, NodePtr end, std::set<NodePtr>& closedSet)
 	{
-		UNREFERENCED_PARAMETER(closedSet);
-
 		std::deque<NodePtr> path;
 		std::priority_queue<NodePtr, std::vector<NodePtr>, Heuristics::GreaterThan> frontier;
 		closedSet.clear();
@@ -31,12 +28,17 @@ namespace Library
 			for (auto neighbor : node->Neighbors())
 			{
 				auto neighborShared = neighbor.lock();
-				if (closedSet.find(neighborShared) == closedSet.end())
+				float pathCost = node->PathCost() + (mCostFunction ? mCostFunction(node, neighborShared) : 0);
+				float heuristic = mHeuristicFunction ? mHeuristicFunction(neighborShared, end) : 0;
+				float newCost = pathCost + heuristic;
+				if (closedSet.find(neighborShared) == closedSet.end() || newCost < neighborShared->TotalCost())
 				{
+					neighborShared->SetPathCost(pathCost);
+					neighborShared->SetHeuristic(heuristic);
 					neighborShared->SetParent(node);
-					neighborShared->SetHeuristic(mHeuristicFunction(neighborShared, end));
 					frontier.push(neighborShared);
 					closedSet.insert(neighborShared);
+
 					if (neighborShared == end)
 					{
 						foundPath = true;
@@ -69,8 +71,8 @@ namespace Library
 		return path;
 	}
 
-	std::string GreedyBestFirstFinder::GetName() const
+	std::string AStarFinder::GetName() const
 	{
-		return std::string("Greedy Best First Search");
+		return std::string("A* Search");
 	}
 }

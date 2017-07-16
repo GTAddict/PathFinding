@@ -23,6 +23,9 @@
     <ClCompile Include="DijkstrasFinder.cpp">
       <Filter>Search Algorithms</Filter>
     </ClCompile>
+    <ClCompile Include="AStarFinder.cpp">
+      <Filter>Search Algorithms</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -45,6 +48,9 @@
       <Filter>Search Algorithms</Filter>
     </ClInclude>
     <ClInclude Include="DijkstrasFinder.h">
+      <Filter>Search Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="AStarFinder.h">
       <Filter>Search Algorithms</Filter>
     </ClInclude>
   </ItemGroup>

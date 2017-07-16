@@ -9,10 +9,10 @@ namespace Library
 
 		std::deque<NodePtr> path;
 		std::queue<NodePtr> frontier;
-		std::unordered_set<NodePtr> visited;
+		closedSet.clear();
 
 		frontier.push(start);
-		visited.insert(start);
+		closedSet.insert(start);
 
 		bool foundPath = false;
 
@@ -24,11 +24,11 @@ namespace Library
 			for (auto neighbor : node->Neighbors())
 			{
 				auto neighborShared = neighbor.lock();
-				if (visited.find(neighborShared) == visited.end())
+				if (closedSet.find(neighborShared) == closedSet.end())
 				{
 					neighborShared->SetParent(node);
 					frontier.push(neighborShared);
-					visited.insert(neighborShared);
+					closedSet.insert(neighborShared);
 					if (neighborShared == end)
 					{
 						foundPath = true;
@@ -59,5 +59,10 @@ namespace Library
 		}
 
 		return path;
+	}
+
+	std::string BreadthFirstFinder::GetName() const
+	{
+		return "Breadth First Search";
 	}
 }

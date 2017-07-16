@@ -13,9 +13,10 @@ int main(int argc, char* argv[])
 
 	int32_t width, height;
 	Graph g = GridHelper::LoadGridFromFile("Grid.grid", width, height);
+	StopWatch stopWatch;
 
 	std::vector<std::shared_ptr<IPathFinder>> pathFinders;
-	// pathFinders.push_back(std::make_shared<AStarFinder>());
+	pathFinders.push_back(std::make_shared<AStarFinder>(Heuristics::ManhattanDistance, Heuristics::ConstantOneDistance));
 	
 	for (auto finder : pathFinders)
 	{
@@ -26,6 +27,8 @@ int main(int argc, char* argv[])
 			collection.insert(node);
 		}
 
+		std::cout << "=======================================================" << std::endl;
+		std::cout << "=======================================================" << std::endl;
 		for (int32_t j = 0; j < height; ++j)
 		{
 			for (int32_t i = 0; i < width; ++i)
@@ -42,8 +45,8 @@ int main(int argc, char* argv[])
 
 			std::cout << std::endl;
 		}
-
-		std::cout << std::endl << "=======================================================" << std::endl;
+		std::cout << "=======================================================" << std::endl;
+		std::cout << "=======================================================" << std::endl;
 	}
 
 	system("pause");

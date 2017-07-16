@@ -27,6 +27,8 @@ namespace Library
 		void SetHeuristicFunction(HeuristicFn_t function);
 		void SetCostFunction(CostFn_t function);
 
+		virtual std::string GetName() const = 0;
+
 	protected:
 		HeuristicFn_t mHeuristicFunction;
 		CostFn_t mCostFunction;
