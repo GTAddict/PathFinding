@@ -220,7 +220,8 @@ namespace PathFinding.GUIApp
 
         private void BFS_Click(object sender, EventArgs e)
         {
-            
+            System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
+            psi.RedirectStandardOutput = true;
         }
 
         private void Greedy_Click(object sender, EventArgs e)

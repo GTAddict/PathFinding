@@ -6,6 +6,7 @@
     <ClInclude Include="ManagedNode.h" />
     <ClInclude Include="ManagedGraph.h" />
     <ClInclude Include="ManagedGridHelper.h" />
+    <ClInclude Include="PathFinder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -14,5 +15,6 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="ManagedGraph.cpp" />
     <ClCompile Include="ManagedGridHelper.cpp" />
+    <ClCompile Include="PathFinder.cpp" />
   </ItemGroup>
 </Project>

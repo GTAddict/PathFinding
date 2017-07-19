@@ -4,6 +4,7 @@
 #include <deque>
 #include <set>
 #include <memory>
+#include <functional>
 
 namespace Library
 {

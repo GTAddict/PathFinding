@@ -32,15 +32,15 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.Grid = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.AStar = new System.Windows.Forms.Button();
+            this.Dijkstra = new System.Windows.Forms.Button();
+            this.Greedy = new System.Windows.Forms.Button();
+            this.BFS = new System.Windows.Forms.Button();
             this.NumColumnsLabel = new System.Windows.Forms.Label();
             this.NumRowsLabel = new System.Windows.Forms.Label();
             this.NumColumnsEntry = new System.Windows.Forms.TextBox();
             this.NumRowsEntry = new System.Windows.Forms.TextBox();
             this.InstructionsText = new System.Windows.Forms.Label();
-            this.BFS = new System.Windows.Forms.Button();
-            this.Greedy = new System.Windows.Forms.Button();
-            this.Dijkstra = new System.Windows.Forms.Button();
-            this.AStar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -101,6 +101,50 @@
             this.panel2.Size = new System.Drawing.Size(984, 100);
             this.panel2.TabIndex = 2;
             // 
+            // AStar
+            // 
+            this.AStar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AStar.Location = new System.Drawing.Point(238, 3);
+            this.AStar.Name = "AStar";
+            this.AStar.Size = new System.Drawing.Size(75, 23);
+            this.AStar.TabIndex = 7;
+            this.AStar.Text = "A*";
+            this.AStar.UseVisualStyleBackColor = true;
+            this.AStar.Click += new System.EventHandler(this.AStar_Click);
+            // 
+            // Dijkstra
+            // 
+            this.Dijkstra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dijkstra.Location = new System.Drawing.Point(319, 3);
+            this.Dijkstra.Name = "Dijkstra";
+            this.Dijkstra.Size = new System.Drawing.Size(75, 23);
+            this.Dijkstra.TabIndex = 6;
+            this.Dijkstra.Text = "Dijkstra\'s";
+            this.Dijkstra.UseVisualStyleBackColor = true;
+            this.Dijkstra.Click += new System.EventHandler(this.Dijkstra_Click);
+            // 
+            // Greedy
+            // 
+            this.Greedy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Greedy.Location = new System.Drawing.Point(400, 3);
+            this.Greedy.Name = "Greedy";
+            this.Greedy.Size = new System.Drawing.Size(98, 23);
+            this.Greedy.TabIndex = 5;
+            this.Greedy.Text = "Greedy Best First";
+            this.Greedy.UseVisualStyleBackColor = true;
+            this.Greedy.Click += new System.EventHandler(this.Greedy_Click);
+            // 
+            // BFS
+            // 
+            this.BFS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BFS.Location = new System.Drawing.Point(504, 3);
+            this.BFS.Name = "BFS";
+            this.BFS.Size = new System.Drawing.Size(75, 23);
+            this.BFS.TabIndex = 4;
+            this.BFS.Text = "BFS";
+            this.BFS.UseVisualStyleBackColor = true;
+            this.BFS.Click += new System.EventHandler(this.BFS_Click);
+            // 
             // NumColumnsLabel
             // 
             this.NumColumnsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -147,50 +191,6 @@
             this.InstructionsText.Name = "InstructionsText";
             this.InstructionsText.Size = new System.Drawing.Size(0, 13);
             this.InstructionsText.TabIndex = 0;
-            // 
-            // BFS
-            // 
-            this.BFS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BFS.Location = new System.Drawing.Point(504, 3);
-            this.BFS.Name = "BFS";
-            this.BFS.Size = new System.Drawing.Size(75, 23);
-            this.BFS.TabIndex = 4;
-            this.BFS.Text = "BFS";
-            this.BFS.UseVisualStyleBackColor = true;
-            this.BFS.Click += new System.EventHandler(this.BFS_Click);
-            // 
-            // Greedy
-            // 
-            this.Greedy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Greedy.Location = new System.Drawing.Point(400, 3);
-            this.Greedy.Name = "Greedy";
-            this.Greedy.Size = new System.Drawing.Size(98, 23);
-            this.Greedy.TabIndex = 5;
-            this.Greedy.Text = "Greedy Best First";
-            this.Greedy.UseVisualStyleBackColor = true;
-            this.Greedy.Click += new System.EventHandler(this.Greedy_Click);
-            // 
-            // Dijkstra
-            // 
-            this.Dijkstra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Dijkstra.Location = new System.Drawing.Point(319, 3);
-            this.Dijkstra.Name = "Dijkstra";
-            this.Dijkstra.Size = new System.Drawing.Size(75, 23);
-            this.Dijkstra.TabIndex = 6;
-            this.Dijkstra.Text = "Dijkstra\'s";
-            this.Dijkstra.UseVisualStyleBackColor = true;
-            this.Dijkstra.Click += new System.EventHandler(this.Dijkstra_Click);
-            // 
-            // AStar
-            // 
-            this.AStar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AStar.Location = new System.Drawing.Point(238, 3);
-            this.AStar.Name = "AStar";
-            this.AStar.Size = new System.Drawing.Size(75, 23);
-            this.AStar.TabIndex = 7;
-            this.AStar.Text = "A*";
-            this.AStar.UseVisualStyleBackColor = true;
-            this.AStar.Click += new System.EventHandler(this.AStar_Click);
             // 
             // Form1
             // 
