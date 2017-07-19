@@ -36,8 +36,11 @@
             this.NumRowsLabel = new System.Windows.Forms.Label();
             this.NumColumnsEntry = new System.Windows.Forms.TextBox();
             this.NumRowsEntry = new System.Windows.Forms.TextBox();
-            this.AlgorithmSelectionBox = new System.Windows.Forms.ComboBox();
             this.InstructionsText = new System.Windows.Forms.Label();
+            this.BFS = new System.Windows.Forms.Button();
+            this.Greedy = new System.Windows.Forms.Button();
+            this.Dijkstra = new System.Windows.Forms.Button();
+            this.AStar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -69,7 +72,6 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel2);
-            this.splitContainer1.Panel2.Controls.Add(this.AlgorithmSelectionBox);
             this.splitContainer1.Panel2.Controls.Add(this.InstructionsText);
             this.splitContainer1.Size = new System.Drawing.Size(984, 961);
             this.splitContainer1.SplitterDistance = 851;
@@ -85,6 +87,10 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.AStar);
+            this.panel2.Controls.Add(this.Dijkstra);
+            this.panel2.Controls.Add(this.Greedy);
+            this.panel2.Controls.Add(this.BFS);
             this.panel2.Controls.Add(this.NumColumnsLabel);
             this.panel2.Controls.Add(this.NumRowsLabel);
             this.panel2.Controls.Add(this.NumColumnsEntry);
@@ -92,14 +98,14 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(863, 100);
+            this.panel2.Size = new System.Drawing.Size(984, 100);
             this.panel2.TabIndex = 2;
             // 
             // NumColumnsLabel
             // 
             this.NumColumnsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.NumColumnsLabel.AutoSize = true;
-            this.NumColumnsLabel.Location = new System.Drawing.Point(751, 36);
+            this.NumColumnsLabel.Location = new System.Drawing.Point(872, 36);
             this.NumColumnsLabel.Name = "NumColumnsLabel";
             this.NumColumnsLabel.Size = new System.Drawing.Size(72, 13);
             this.NumColumnsLabel.TabIndex = 3;
@@ -109,7 +115,7 @@
             // 
             this.NumRowsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.NumRowsLabel.AutoSize = true;
-            this.NumRowsLabel.Location = new System.Drawing.Point(764, 8);
+            this.NumRowsLabel.Location = new System.Drawing.Point(885, 8);
             this.NumRowsLabel.Name = "NumRowsLabel";
             this.NumRowsLabel.Size = new System.Drawing.Size(59, 13);
             this.NumRowsLabel.TabIndex = 2;
@@ -118,7 +124,7 @@
             // NumColumnsEntry
             // 
             this.NumColumnsEntry.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.NumColumnsEntry.Location = new System.Drawing.Point(829, 29);
+            this.NumColumnsEntry.Location = new System.Drawing.Point(950, 29);
             this.NumColumnsEntry.MaxLength = 2;
             this.NumColumnsEntry.Name = "NumColumnsEntry";
             this.NumColumnsEntry.Size = new System.Drawing.Size(31, 20);
@@ -127,24 +133,11 @@
             // NumRowsEntry
             // 
             this.NumRowsEntry.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.NumRowsEntry.Location = new System.Drawing.Point(829, 3);
+            this.NumRowsEntry.Location = new System.Drawing.Point(950, 3);
             this.NumRowsEntry.MaxLength = 2;
             this.NumRowsEntry.Name = "NumRowsEntry";
             this.NumRowsEntry.Size = new System.Drawing.Size(31, 20);
             this.NumRowsEntry.TabIndex = 0;
-            // 
-            // AlgorithmSelectionBox
-            // 
-            this.AlgorithmSelectionBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.AlgorithmSelectionBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.AlgorithmSelectionBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.AlgorithmSelectionBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.AlgorithmSelectionBox.FormattingEnabled = true;
-            this.AlgorithmSelectionBox.Location = new System.Drawing.Point(863, 0);
-            this.AlgorithmSelectionBox.Name = "AlgorithmSelectionBox";
-            this.AlgorithmSelectionBox.Size = new System.Drawing.Size(121, 21);
-            this.AlgorithmSelectionBox.TabIndex = 1;
-            this.AlgorithmSelectionBox.Text = "Select Algorithm...";
             // 
             // InstructionsText
             // 
@@ -154,6 +147,50 @@
             this.InstructionsText.Name = "InstructionsText";
             this.InstructionsText.Size = new System.Drawing.Size(0, 13);
             this.InstructionsText.TabIndex = 0;
+            // 
+            // BFS
+            // 
+            this.BFS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BFS.Location = new System.Drawing.Point(504, 3);
+            this.BFS.Name = "BFS";
+            this.BFS.Size = new System.Drawing.Size(75, 23);
+            this.BFS.TabIndex = 4;
+            this.BFS.Text = "BFS";
+            this.BFS.UseVisualStyleBackColor = true;
+            this.BFS.Click += new System.EventHandler(this.BFS_Click);
+            // 
+            // Greedy
+            // 
+            this.Greedy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Greedy.Location = new System.Drawing.Point(400, 3);
+            this.Greedy.Name = "Greedy";
+            this.Greedy.Size = new System.Drawing.Size(98, 23);
+            this.Greedy.TabIndex = 5;
+            this.Greedy.Text = "Greedy Best First";
+            this.Greedy.UseVisualStyleBackColor = true;
+            this.Greedy.Click += new System.EventHandler(this.Greedy_Click);
+            // 
+            // Dijkstra
+            // 
+            this.Dijkstra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dijkstra.Location = new System.Drawing.Point(319, 3);
+            this.Dijkstra.Name = "Dijkstra";
+            this.Dijkstra.Size = new System.Drawing.Size(75, 23);
+            this.Dijkstra.TabIndex = 6;
+            this.Dijkstra.Text = "Dijkstra\'s";
+            this.Dijkstra.UseVisualStyleBackColor = true;
+            this.Dijkstra.Click += new System.EventHandler(this.Dijkstra_Click);
+            // 
+            // AStar
+            // 
+            this.AStar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AStar.Location = new System.Drawing.Point(238, 3);
+            this.AStar.Name = "AStar";
+            this.AStar.Size = new System.Drawing.Size(75, 23);
+            this.AStar.TabIndex = 7;
+            this.AStar.Text = "A*";
+            this.AStar.UseVisualStyleBackColor = true;
+            this.AStar.Click += new System.EventHandler(this.AStar_Click);
             // 
             // Form1
             // 
@@ -181,12 +218,15 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.FlowLayoutPanel Grid;
         private System.Windows.Forms.Label InstructionsText;
-        private System.Windows.Forms.ComboBox AlgorithmSelectionBox;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label NumColumnsLabel;
         private System.Windows.Forms.Label NumRowsLabel;
         private System.Windows.Forms.TextBox NumColumnsEntry;
         private System.Windows.Forms.TextBox NumRowsEntry;
+        private System.Windows.Forms.Button BFS;
+        private System.Windows.Forms.Button Greedy;
+        private System.Windows.Forms.Button Dijkstra;
+        private System.Windows.Forms.Button AStar;
     }
 }
 

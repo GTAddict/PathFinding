@@ -28,6 +28,9 @@ namespace Library
 			for (auto neighbor : node->Neighbors())
 			{
 				auto neighborShared = neighbor.lock();
+
+				if (neighborShared->Type() == NodeType::Wall)	continue;
+
 				float pathCost = node->PathCost() + (mCostFunction ? mCostFunction(node, neighborShared) : 0);
 				float heuristic = mHeuristicFunction ? mHeuristicFunction(neighborShared, end) : 0;
 				float newCost = pathCost + heuristic;

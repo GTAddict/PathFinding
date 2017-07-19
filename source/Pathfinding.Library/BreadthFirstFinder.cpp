@@ -24,7 +24,7 @@ namespace Library
 			for (auto neighbor : node->Neighbors())
 			{
 				auto neighborShared = neighbor.lock();
-				if (closedSet.find(neighborShared) == closedSet.end())
+				if (closedSet.find(neighborShared) == closedSet.end() && neighborShared->Type() != NodeType::Wall)
 				{
 					neighborShared->SetParent(node);
 					frontier.push(neighborShared);

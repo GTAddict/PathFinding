@@ -22,6 +22,9 @@ namespace PathFinding.GUIApp
             this.NumColumnsEntry.Leave += RowColumnNumTextChanged;
             this.InstructionsText.Text = "LMB to place start node.\nRMB to place end node.\nMMB to place obstacle or revert to empty space.";
 
+            NumRowsEntry.Text = row.ToString();
+            NumColumnsEntry.Text = col.ToString();
+
             RowColumnNumTextChanged(this, null);
         }
 
@@ -214,5 +217,25 @@ namespace PathFinding.GUIApp
         ManagedPoint invalidPoint = new ManagedPoint(-1, -1);
         ManagedPoint start = new ManagedPoint(-1, -1);
         ManagedPoint end = new ManagedPoint(-1, -1);
+
+        private void BFS_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Greedy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dijkstra_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AStar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
