@@ -27,6 +27,12 @@ namespace Library
 
 			return gcnew ManagedGraph(graph);
 		}
+
+		ManagedGraph^ ManagedGridHelper::CreateGrid(int width, int height)
+		{
+			Graph graph = GridHelper::CreateGrid(width, height);
+			return gcnew ManagedGraph(graph);
+		}
 	}
 }
 

@@ -31,13 +31,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.Grid = new System.Windows.Forms.FlowLayoutPanel();
-            this.InstructionsText = new System.Windows.Forms.Label();
-            this.AlgorithmSelectionBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.NumRowsEntry = new System.Windows.Forms.TextBox();
-            this.NumColumnsEntry = new System.Windows.Forms.TextBox();
-            this.NumRowsLabel = new System.Windows.Forms.Label();
             this.NumColumnsLabel = new System.Windows.Forms.Label();
+            this.NumRowsLabel = new System.Windows.Forms.Label();
+            this.NumColumnsEntry = new System.Windows.Forms.TextBox();
+            this.NumRowsEntry = new System.Windows.Forms.TextBox();
+            this.AlgorithmSelectionBox = new System.Windows.Forms.ComboBox();
+            this.InstructionsText = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -83,14 +83,55 @@
             this.Grid.Size = new System.Drawing.Size(984, 851);
             this.Grid.TabIndex = 0;
             // 
-            // InstructionsText
+            // panel2
             // 
-            this.InstructionsText.AutoSize = true;
-            this.InstructionsText.Dock = System.Windows.Forms.DockStyle.Left;
-            this.InstructionsText.Location = new System.Drawing.Point(0, 0);
-            this.InstructionsText.Name = "InstructionsText";
-            this.InstructionsText.Size = new System.Drawing.Size(0, 13);
-            this.InstructionsText.TabIndex = 0;
+            this.panel2.Controls.Add(this.NumColumnsLabel);
+            this.panel2.Controls.Add(this.NumRowsLabel);
+            this.panel2.Controls.Add(this.NumColumnsEntry);
+            this.panel2.Controls.Add(this.NumRowsEntry);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(863, 100);
+            this.panel2.TabIndex = 2;
+            // 
+            // NumColumnsLabel
+            // 
+            this.NumColumnsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.NumColumnsLabel.AutoSize = true;
+            this.NumColumnsLabel.Location = new System.Drawing.Point(751, 36);
+            this.NumColumnsLabel.Name = "NumColumnsLabel";
+            this.NumColumnsLabel.Size = new System.Drawing.Size(72, 13);
+            this.NumColumnsLabel.TabIndex = 3;
+            this.NumColumnsLabel.Text = "Num Columns";
+            // 
+            // NumRowsLabel
+            // 
+            this.NumRowsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.NumRowsLabel.AutoSize = true;
+            this.NumRowsLabel.Location = new System.Drawing.Point(764, 8);
+            this.NumRowsLabel.Name = "NumRowsLabel";
+            this.NumRowsLabel.Size = new System.Drawing.Size(59, 13);
+            this.NumRowsLabel.TabIndex = 2;
+            this.NumRowsLabel.Text = "Num Rows";
+            // 
+            // NumColumnsEntry
+            // 
+            this.NumColumnsEntry.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.NumColumnsEntry.Location = new System.Drawing.Point(829, 29);
+            this.NumColumnsEntry.MaxLength = 2;
+            this.NumColumnsEntry.Name = "NumColumnsEntry";
+            this.NumColumnsEntry.Size = new System.Drawing.Size(31, 20);
+            this.NumColumnsEntry.TabIndex = 1;
+            // 
+            // NumRowsEntry
+            // 
+            this.NumRowsEntry.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.NumRowsEntry.Location = new System.Drawing.Point(829, 3);
+            this.NumRowsEntry.MaxLength = 2;
+            this.NumRowsEntry.Name = "NumRowsEntry";
+            this.NumRowsEntry.Size = new System.Drawing.Size(31, 20);
+            this.NumRowsEntry.TabIndex = 0;
             // 
             // AlgorithmSelectionBox
             // 
@@ -105,55 +146,14 @@
             this.AlgorithmSelectionBox.TabIndex = 1;
             this.AlgorithmSelectionBox.Text = "Select Algorithm...";
             // 
-            // panel2
+            // InstructionsText
             // 
-            this.panel2.Controls.Add(this.NumColumnsLabel);
-            this.panel2.Controls.Add(this.NumRowsLabel);
-            this.panel2.Controls.Add(this.NumColumnsEntry);
-            this.panel2.Controls.Add(this.NumRowsEntry);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(863, 100);
-            this.panel2.TabIndex = 2;
-            // 
-            // NumRowsEntry
-            // 
-            this.NumRowsEntry.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.NumRowsEntry.Location = new System.Drawing.Point(829, 3);
-            this.NumRowsEntry.MaxLength = 2;
-            this.NumRowsEntry.Name = "NumRowsEntry";
-            this.NumRowsEntry.Size = new System.Drawing.Size(31, 20);
-            this.NumRowsEntry.TabIndex = 0;
-            // 
-            // NumColumnsEntry
-            // 
-            this.NumColumnsEntry.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.NumColumnsEntry.Location = new System.Drawing.Point(829, 29);
-            this.NumColumnsEntry.MaxLength = 2;
-            this.NumColumnsEntry.Name = "NumColumnsEntry";
-            this.NumColumnsEntry.Size = new System.Drawing.Size(31, 20);
-            this.NumColumnsEntry.TabIndex = 1;
-            // 
-            // NumRowsLabel
-            // 
-            this.NumRowsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.NumRowsLabel.AutoSize = true;
-            this.NumRowsLabel.Location = new System.Drawing.Point(764, 8);
-            this.NumRowsLabel.Name = "NumRowsLabel";
-            this.NumRowsLabel.Size = new System.Drawing.Size(59, 13);
-            this.NumRowsLabel.TabIndex = 2;
-            this.NumRowsLabel.Text = "Num Rows";
-            // 
-            // NumColumnsLabel
-            // 
-            this.NumColumnsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.NumColumnsLabel.AutoSize = true;
-            this.NumColumnsLabel.Location = new System.Drawing.Point(751, 36);
-            this.NumColumnsLabel.Name = "NumColumnsLabel";
-            this.NumColumnsLabel.Size = new System.Drawing.Size(72, 13);
-            this.NumColumnsLabel.TabIndex = 3;
-            this.NumColumnsLabel.Text = "Num Columns";
+            this.InstructionsText.AutoSize = true;
+            this.InstructionsText.Dock = System.Windows.Forms.DockStyle.Left;
+            this.InstructionsText.Location = new System.Drawing.Point(0, 0);
+            this.InstructionsText.Name = "InstructionsText";
+            this.InstructionsText.Size = new System.Drawing.Size(0, 13);
+            this.InstructionsText.TabIndex = 0;
             // 
             // Form1
             // 

@@ -27,6 +27,11 @@ namespace Library
 		return mType;
 	}
 
+	inline void Node::SetType(NodeType type)
+	{
+		mType = type;
+	}
+
 	inline const Point& Node::Location() const
 	{
 		return mLocation;

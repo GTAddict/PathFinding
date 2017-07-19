@@ -14,8 +14,10 @@ namespace Library
 
 		public enum class ManagedNodeType
 		{
-			Normal = 0,
-			Wall = 1
+			Normal,
+			Start,
+			End,
+			Wall
 		};
 
 		public ref class ManagedNode sealed
@@ -26,7 +28,7 @@ namespace Library
 			~ManagedNode();
 
 			property System::Guid^ ID { System::Guid^ get(); }
-			property ManagedNodeType Type { ManagedNodeType get(); }
+			property ManagedNodeType Type { ManagedNodeType get(); void set(ManagedNodeType type); }
 			property ManagedPoint^ Location { ManagedPoint^ get(); }
 			property float PathCost { float get(); }
 			property float Heuristic { float get(); }

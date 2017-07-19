@@ -42,6 +42,11 @@ namespace Library
 			return (ManagedNodeType)(*mNode)->Type();
 		}
 
+		void ManagedNode::Type::set(ManagedNodeType type)
+		{
+			(*mNode)->SetType((NodeType)type);
+		}
+
 		ManagedPoint^ ManagedNode::Location::get()
 		{
 			auto location = (*mNode)->Location();

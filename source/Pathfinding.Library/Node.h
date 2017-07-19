@@ -9,8 +9,10 @@ namespace Library
 {
 	enum class NodeType
 	{
-		Normal = 0,
-		Wall = 1
+		Normal,
+		Start,
+		End,
+		Wall
 	};
 
 	class Node final
@@ -29,6 +31,7 @@ namespace Library
 
 		const GUID& ID() const;
 		NodeType Type() const;
+		void SetType(NodeType type);
 		const Point& Location() const;
 		
 		float PathCost() const;

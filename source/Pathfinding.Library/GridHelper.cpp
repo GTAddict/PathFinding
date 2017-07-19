@@ -88,6 +88,41 @@ namespace Library
 		return graph;
 	}
 
+	Graph GridHelper::CreateGrid(int32_t width, int32_t height)
+	{
+		const Point NeighborOffsets[] = { Point(-1, 0), Point(1, 0), Point(0, -1), Point(0, 1) };
+
+		Graph graph;
+		for (int y = 0; y < height; y++)
+		{
+			for (int x = 0; x < width; x++)
+			{
+				graph.AddNode(make_shared<Node>(Point(x, y), NodeType::Normal));
+			}
+		}
+
+		// Assign adjacent nodes
+		for (int y = 0; y < height; y++)
+		{
+			for (int x = 0; x < width; x++)
+			{
+				shared_ptr<Node> node = graph.At(x, y);
+
+				for (const Point& offset : NeighborOffsets)
+				{
+					Point location(node->Location().X() + offset.X(), node->Location().Y() + offset.Y());
+					if (IsValidGridLocation(location, width, height))
+					{
+						shared_ptr<Node> neighbor = graph.At(location);
+						node->Neighbors().push_back(neighbor);
+					}
+				}
+			}
+		}
+
+		return graph;
+	}
+
 	bool GridHelper::IsValidGridLocation(const Point& location, int maxWidth, int maxLength)
 	{
 		return (location.X() >= 0 && location.X() < maxWidth) && (location.Y() >= 0 && location.Y() < maxLength);

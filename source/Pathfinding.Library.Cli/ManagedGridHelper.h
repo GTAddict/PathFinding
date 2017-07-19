@@ -17,6 +17,7 @@ namespace Library
 		public:
 			static ManagedGraph^ LoadGridFromFile(System::String^ filename);
 			static ManagedGraph^ LoadGridFromFile(System::String^ filename, [Out] int% graphWidth, [Out] int% graphHeight);
+			static ManagedGraph^ CreateGrid(int width, int height);
 		};
 	}
 }
