@@ -212,7 +212,7 @@
             this.ClientSize = new System.Drawing.Size(984, 961);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Krishna\'s Pathfinding Tool";
             this.panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
