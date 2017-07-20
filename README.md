@@ -3,8 +3,8 @@ A Pathfinding Library that can be used to find paths between nodes. Visualizatio
 Uses C++ for the pathfinding and C# for the visualization.
 Uses C++/CLI as the bridge.
 
-The algorithms implemented are:
-Depth First Search
-Greedy Best First Search
-Dijkstra's Algorithm
-A* Search
+The algorithms implemented are:<br>
+- Depth First Search<br>
+- Greedy Best First Search<br>
+- Dijkstra's Algorithm<br>
+- A* Search<br>
