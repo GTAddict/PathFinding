@@ -3,12 +3,12 @@
 #using <System.dll>
 #include <cliext/set>
 #include <cliext/deque>
+#include "ManagedGraph.h"
+#include "ManagedNode.h"
 
 namespace Library
 {
 	class IPathFinder;
-	ref class ManagedNode;
-	ref class ManagedGraph;
 
 	namespace Cli
 	{
@@ -24,9 +24,7 @@ namespace Library
 		{
 		public:
 			PathFinder(PathFindType type);
-			void FindPath(ManagedGraph^ graph, ManagedNode^ start, ManagedNode^ end);
-			// void FindPathA(ManagedGraph^ graph, ManagedNode^ start, ManagedNode^ end);
-			/*cliext::deque<ManagedNode>*/
+			System::Collections::Generic::ICollection<ManagedNode^>^ FindPath(ManagedGraph^ graph, ManagedNode^ start, ManagedNode^ end);
 
 		private:
 			Library::IPathFinder* mPathFinder;

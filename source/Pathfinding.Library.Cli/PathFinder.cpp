@@ -2,6 +2,10 @@
 #include "PathFinder.h"
 #include "ManagedNode.h"
 #include "ManagedGraph.h"
+#include "ManagedPoint.h"
+#include "Node.h"
+#include "Point.h"
+#include "Graph.h"
 #include <assert.h>
 
 using namespace System;
@@ -25,26 +29,18 @@ namespace Library
 			}
 		}
 
-		void PathFinder::FindPath(ManagedGraph^ graph, ManagedNode^ start, ManagedNode^ end)
+		System::Collections::Generic::ICollection<ManagedNode^>^ PathFinder::FindPath(ManagedGraph^ graph, ManagedNode^ start, ManagedNode^ end)
 		{
-			UNREFERENCED_PARAMETER(graph);
-			UNREFERENCED_PARAMETER(start);
-			UNREFERENCED_PARAMETER(end);
-			// mPathFinder->FindPath(nullptr, nullptr);
-		}
+			auto deck = gcnew cliext::deque<Library::Cli::ManagedNode^>();
+			auto retval = mPathFinder->FindPath(graph->UnmanagedGraph->At(start->Location->X, start->Location->Y), graph->UnmanagedGraph->At(end->Location->X, end->Location->Y));
 
-		// void PathFinder::FindPathA(ManagedGraph^ graph, ManagedNode^ start, ManagedNode^ end)
-		// {
-		// 	// return mPathFinder->FindPath(std::make_shared<Node>(marshal_as<Node*>(start)), std::make_shared<Node>(marshal_as<Node*>(end)));
-		// 	// auto deck = gcnew cliext::deque<Library::Cli::ManagedNode^>();
-		// 	mPathFinder->FindPath(std::make_shared<Node>(start->UnmanagedNode), std::make_shared<Node>(end->UnmanagedNode));
-		// 
-		// 	// for (auto val : retVal)
-		// 	// {
-		// 	// 	Library::Cli::ManagedNode^ node = graph[val.get()->Location];
-		// 	// 
-		// 	// 	deck->Add(node);
-		// 	// }
-		// }
+			for (auto val : retval)
+			{
+				Library::Cli::ManagedNode^ node = graph[val.get()->Location().X(), val.get()->Location().Y()];
+				deck->push_back(node);
+			}
+
+			return deck;
+		}
 	}
 }

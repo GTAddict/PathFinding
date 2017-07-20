@@ -204,39 +204,109 @@ namespace PathFinding.GUIApp
         }
 
         List<Button> buttons = new List<Button>();
-        int row = 3;
-        int col = 3;
+        int row = 5;
+        int col = 5;
         int horizontalTolerance = 0;
         int verticalTolerance = 0;
 
         Image Flag = Image.FromFile("Content\\flag.png");
         Image House = Image.FromFile("Content\\house.png");
         Image Wall = Image.FromFile("Content\\wall.png");
+        Image Feet = Image.FromFile("Content\\feet.png");
 
         ManagedGraph graph;
         ManagedPoint invalidPoint = new ManagedPoint(-1, -1);
         ManagedPoint start = new ManagedPoint(-1, -1);
         ManagedPoint end = new ManagedPoint(-1, -1);
 
+        Dictionary<PathFindType, PathFinder> pathFinders = new Dictionary<PathFindType, PathFinder>()
+        {
+            { PathFindType.BFS,                 new PathFinder(PathFindType.BFS)                },
+            { PathFindType.GreedyBreadthFirst,  new PathFinder(PathFindType.GreedyBreadthFirst) },
+            { PathFindType.Dijkstra,            new PathFinder(PathFindType.Dijkstra)           },
+            { PathFindType.AStar,               new PathFinder(PathFindType.AStar)              }
+        };
+
         private void BFS_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
-            psi.RedirectStandardOutput = true;
+            PathFind(PathFindType.BFS);
         }
 
         private void Greedy_Click(object sender, EventArgs e)
         {
-
+            PathFind(PathFindType.GreedyBreadthFirst);
         }
 
         private void Dijkstra_Click(object sender, EventArgs e)
         {
-
+            PathFind(PathFindType.Dijkstra);
         }
 
         private void AStar_Click(object sender, EventArgs e)
         {
+            PathFind(PathFindType.AStar);
+        }
 
+        Button GetButtonForCoords(int x, int y)
+        {
+            return buttons[y * col + x];
+        }
+
+        void UpdatePath(ICollection<ManagedNode> nodes)
+        {
+            UpdateTextures();
+
+            if (nodes.Count == 0)
+            {
+                MessageBox.Show("No path found!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                foreach (var node in nodes)
+                {
+                    if (node.Location != start && node.Location != end)
+                    {
+                        GetButtonForCoords(node.Location.X, node.Location.Y).Image = Feet;
+                    }
+                }
+            }
+        }
+
+        bool IsValidPathfindRequest()
+        {
+            if (start == invalidPoint || end == invalidPoint)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        void PathFind(PathFindType type)
+        {
+            if (IsValidPathfindRequest())
+            {
+                UpdatePath(pathFinders[type].FindPath(graph, graph[start], graph[end]));
+            }
+            else
+            {
+                MessageBox.Show("The start or end point is not set!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < row; ++i)
+            {
+                for (int j = 0; j < col; ++j)
+                {
+                    graph[j, i].Type = ManagedNodeType.Normal;
+                }
+            }
+
+            start = end = invalidPoint;
+
+            UpdateTextures();
         }
     }
 }

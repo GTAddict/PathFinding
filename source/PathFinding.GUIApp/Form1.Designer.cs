@@ -41,6 +41,7 @@
             this.NumColumnsEntry = new System.Windows.Forms.TextBox();
             this.NumRowsEntry = new System.Windows.Forms.TextBox();
             this.InstructionsText = new System.Windows.Forms.Label();
+            this.Clear = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -87,6 +88,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.Clear);
             this.panel2.Controls.Add(this.AStar);
             this.panel2.Controls.Add(this.Dijkstra);
             this.panel2.Controls.Add(this.Greedy);
@@ -103,7 +105,7 @@
             // 
             // AStar
             // 
-            this.AStar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AStar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.AStar.Location = new System.Drawing.Point(238, 3);
             this.AStar.Name = "AStar";
             this.AStar.Size = new System.Drawing.Size(75, 23);
@@ -114,7 +116,7 @@
             // 
             // Dijkstra
             // 
-            this.Dijkstra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dijkstra.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Dijkstra.Location = new System.Drawing.Point(319, 3);
             this.Dijkstra.Name = "Dijkstra";
             this.Dijkstra.Size = new System.Drawing.Size(75, 23);
@@ -125,7 +127,7 @@
             // 
             // Greedy
             // 
-            this.Greedy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Greedy.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Greedy.Location = new System.Drawing.Point(400, 3);
             this.Greedy.Name = "Greedy";
             this.Greedy.Size = new System.Drawing.Size(98, 23);
@@ -136,7 +138,7 @@
             // 
             // BFS
             // 
-            this.BFS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BFS.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BFS.Location = new System.Drawing.Point(504, 3);
             this.BFS.Name = "BFS";
             this.BFS.Size = new System.Drawing.Size(75, 23);
@@ -192,6 +194,17 @@
             this.InstructionsText.Size = new System.Drawing.Size(0, 13);
             this.InstructionsText.TabIndex = 0;
             // 
+            // Clear
+            // 
+            this.Clear.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Clear.Location = new System.Drawing.Point(357, 29);
+            this.Clear.Name = "Clear";
+            this.Clear.Size = new System.Drawing.Size(75, 23);
+            this.Clear.TabIndex = 8;
+            this.Clear.Text = "Clear";
+            this.Clear.UseVisualStyleBackColor = true;
+            this.Clear.Click += new System.EventHandler(this.Clear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,6 +240,7 @@
         private System.Windows.Forms.Button Greedy;
         private System.Windows.Forms.Button Dijkstra;
         private System.Windows.Forms.Button AStar;
+        private System.Windows.Forms.Button Clear;
     }
 }
 
