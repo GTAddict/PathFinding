@@ -171,25 +171,29 @@ namespace PathFinding.GUIApp
                 {
                     case ManagedNodeType.Start:
                         {
-                            button.Image = House;
+                            button.BackgroundImage = House;
+                            button.BackgroundImageLayout = ImageLayout.Center;
                         }
                         break;
 
                     case ManagedNodeType.End:
                         {
-                            button.Image = Flag;
+                            button.BackgroundImage = Flag;
+                            button.BackgroundImageLayout = ImageLayout.Center;
                         }
                         break;
 
                     case ManagedNodeType.Wall:
                         {
-                            button.Image = Wall;
+                            button.BackgroundImage = Wall;
+                            button.BackgroundImageLayout = ImageLayout.Tile;
                         }
                         break;
 
                     case ManagedNodeType.Normal:
                         {
-                            button.Image = null;
+                            button.BackgroundImage = null;
+                            button.BackgroundImageLayout = ImageLayout.Center;
                         }
                         break;
                 }
@@ -204,7 +208,9 @@ namespace PathFinding.GUIApp
             {
                 if (node.Location != start && node.Location != end)
                 {
-                    GetButtonForCoords(node.Location.X, node.Location.Y).Image = Eyes;
+                    Button button = GetButtonForCoords(node.Location.X, node.Location.Y);
+                    button.BackgroundImage = Eyes;
+                    button.BackgroundImageLayout = ImageLayout.Center;
                 }
             }
 
@@ -218,7 +224,9 @@ namespace PathFinding.GUIApp
                 {
                     if (node.Location != start && node.Location != end)
                     {
-                        GetButtonForCoords(node.Location.X, node.Location.Y).Image = Feet;
+                        Button button = GetButtonForCoords(node.Location.X, node.Location.Y);
+                        button.BackgroundImage = Feet;
+                        button.BackgroundImageLayout = ImageLayout.Center;
                     }
                 }
             }
