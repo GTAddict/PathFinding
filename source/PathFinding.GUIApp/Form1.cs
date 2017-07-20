@@ -17,6 +17,10 @@ namespace PathFinding.GUIApp
         {
             InitializeComponent();
 
+            Bitmap b = (Bitmap)Feet;
+            IntPtr pIcon = b.GetHicon();
+            this.Icon = Icon.FromHandle(pIcon);
+
             this.Grid.SizeChanged += FlowLayoutPanel1_SizeChanged;
             this.NumRowsEntry.Leave += RowColumnNumTextChanged;
             this.NumColumnsEntry.Leave += RowColumnNumTextChanged;
