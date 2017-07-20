@@ -6,6 +6,8 @@
 #include "ManagedGraph.h"
 #include "ManagedNode.h"
 
+using namespace System::Runtime::InteropServices;
+
 namespace Library
 {
 	class IPathFinder;
@@ -25,6 +27,7 @@ namespace Library
 		public:
 			PathFinder(PathFindType type);
 			System::Collections::Generic::ICollection<ManagedNode^>^ FindPath(ManagedGraph^ graph, ManagedNode^ start, ManagedNode^ end);
+			System::Collections::Generic::ICollection<ManagedNode^>^ FindPathA(ManagedGraph^ graph, ManagedNode^ start, ManagedNode^ end, [Out] System::Collections::Generic::ICollection<ManagedNode^>^% closedSet);
 
 		private:
 			Library::IPathFinder* mPathFinder;

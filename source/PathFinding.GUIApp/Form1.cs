@@ -196,65 +196,17 @@ namespace PathFinding.GUIApp
             }
         }
 
-        private void GetButtonGraphCoords(Button b, out int x, out int y)
-        {
-            int ID = int.Parse(b.Name);
-            x = ID % col;
-            y = ID / col;
-        }
-
-        List<Button> buttons = new List<Button>();
-        int row = 5;
-        int col = 5;
-        int horizontalTolerance = 0;
-        int verticalTolerance = 0;
-
-        Image Flag = Image.FromFile("Content\\flag.png");
-        Image House = Image.FromFile("Content\\house.png");
-        Image Wall = Image.FromFile("Content\\wall.png");
-        Image Feet = Image.FromFile("Content\\feet.png");
-
-        ManagedGraph graph;
-        ManagedPoint invalidPoint = new ManagedPoint(-1, -1);
-        ManagedPoint start = new ManagedPoint(-1, -1);
-        ManagedPoint end = new ManagedPoint(-1, -1);
-
-        Dictionary<PathFindType, PathFinder> pathFinders = new Dictionary<PathFindType, PathFinder>()
-        {
-            { PathFindType.BFS,                 new PathFinder(PathFindType.BFS)                },
-            { PathFindType.GreedyBreadthFirst,  new PathFinder(PathFindType.GreedyBreadthFirst) },
-            { PathFindType.Dijkstra,            new PathFinder(PathFindType.Dijkstra)           },
-            { PathFindType.AStar,               new PathFinder(PathFindType.AStar)              }
-        };
-
-        private void BFS_Click(object sender, EventArgs e)
-        {
-            PathFind(PathFindType.BFS);
-        }
-
-        private void Greedy_Click(object sender, EventArgs e)
-        {
-            PathFind(PathFindType.GreedyBreadthFirst);
-        }
-
-        private void Dijkstra_Click(object sender, EventArgs e)
-        {
-            PathFind(PathFindType.Dijkstra);
-        }
-
-        private void AStar_Click(object sender, EventArgs e)
-        {
-            PathFind(PathFindType.AStar);
-        }
-
-        Button GetButtonForCoords(int x, int y)
-        {
-            return buttons[y * col + x];
-        }
-
-        void UpdatePath(ICollection<ManagedNode> nodes)
+        void UpdatePath(ICollection<ManagedNode> nodes, ICollection<ManagedNode> visitedNodes)
         {
             UpdateTextures();
+
+            foreach (var node in visitedNodes)
+            {
+                if (node.Location != start && node.Location != end)
+                {
+                    GetButtonForCoords(node.Location.X, node.Location.Y).Image = Eyes;
+                }
+            }
 
             if (nodes.Count == 0)
             {
@@ -286,12 +238,33 @@ namespace PathFinding.GUIApp
         {
             if (IsValidPathfindRequest())
             {
-                UpdatePath(pathFinders[type].FindPath(graph, graph[start], graph[end]));
+                ICollection<ManagedNode> closedSet = new List<ManagedNode>();
+                UpdatePath(pathFinders[type].FindPathA(graph, graph[start], graph[end], out closedSet), closedSet);
             }
             else
             {
                 MessageBox.Show("The start or end point is not set!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void BFS_Click(object sender, EventArgs e)
+        {
+            PathFind(PathFindType.BFS);
+        }
+
+        private void Greedy_Click(object sender, EventArgs e)
+        {
+            PathFind(PathFindType.GreedyBreadthFirst);
+        }
+
+        private void Dijkstra_Click(object sender, EventArgs e)
+        {
+            PathFind(PathFindType.Dijkstra);
+        }
+
+        private void AStar_Click(object sender, EventArgs e)
+        {
+            PathFind(PathFindType.AStar);
         }
 
         private void Clear_Click(object sender, EventArgs e)
@@ -308,5 +281,42 @@ namespace PathFinding.GUIApp
 
             UpdateTextures();
         }
+
+        Button GetButtonForCoords(int x, int y)
+        {
+            return buttons[y * col + x];
+        }
+
+        private void GetButtonGraphCoords(Button b, out int x, out int y)
+        {
+            int ID = int.Parse(b.Name);
+            x = ID % col;
+            y = ID / col;
+        }
+
+        List<Button> buttons = new List<Button>();
+        int row = 5;
+        int col = 5;
+        int horizontalTolerance = 0;
+        int verticalTolerance = 0;
+
+        Image Flag = Image.FromFile("Content\\flag.png");
+        Image House = Image.FromFile("Content\\house.png");
+        Image Wall = Image.FromFile("Content\\wall.png");
+        Image Feet = Image.FromFile("Content\\feet.png");
+        Image Eyes = Image.FromFile("Content\\eyes.png");
+
+        ManagedGraph graph;
+        ManagedPoint invalidPoint = new ManagedPoint(-1, -1);
+        ManagedPoint start = new ManagedPoint(-1, -1);
+        ManagedPoint end = new ManagedPoint(-1, -1);
+
+        Dictionary<PathFindType, PathFinder> pathFinders = new Dictionary<PathFindType, PathFinder>()
+        {
+            { PathFindType.BFS,                 new PathFinder(PathFindType.BFS)                },
+            { PathFindType.GreedyBreadthFirst,  new PathFinder(PathFindType.GreedyBreadthFirst) },
+            { PathFindType.Dijkstra,            new PathFinder(PathFindType.Dijkstra)           },
+            { PathFindType.AStar,               new PathFinder(PathFindType.AStar)              }
+        };
     }
 }

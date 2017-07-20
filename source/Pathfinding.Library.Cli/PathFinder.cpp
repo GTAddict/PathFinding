@@ -42,5 +42,26 @@ namespace Library
 
 			return deck;
 		}
+
+		System::Collections::Generic::ICollection<ManagedNode^>^ PathFinder::FindPathA(ManagedGraph^ graph, ManagedNode^ start, ManagedNode^ end, [Out] System::Collections::Generic::ICollection<ManagedNode^>^% closedSet)
+		{
+			auto deck = gcnew cliext::deque<Library::Cli::ManagedNode^>();
+			std::set<NodePtr> closedSetNative;
+			auto retval = mPathFinder->FindPath(graph->UnmanagedGraph->At(start->Location->X, start->Location->Y), graph->UnmanagedGraph->At(end->Location->X, end->Location->Y), closedSetNative);
+
+			for (auto val : retval)
+			{
+				Library::Cli::ManagedNode^ node = graph[val.get()->Location().X(), val.get()->Location().Y()];
+				deck->push_back(node);
+			}
+
+			for (auto val : closedSetNative)
+			{
+				Library::Cli::ManagedNode^ node = graph[val.get()->Location().X(), val.get()->Location().Y()];
+				closedSet->Add(node);
+			}
+
+			return deck;
+		}
 	}
 }
